@@ -1,0 +1,22 @@
+function BondrixLib.SendNotification(notification)
+    BeginTextCommandThefeedPost('STRING')
+    AddTextComponentSubstringPlayerName(notification.message)
+    ThefeedNextPostBackgroundColor(notification.color)
+    EndTextCommandThefeedPostTicker(notification.flash, notification.important)
+end
+RegisterNetEvent('bondrix_lib:onNotificationSend')
+AddEventHandler('bondrix_lib:onNotificationSend', function(notification)
+    BondrixLib.SendNotification(notification)
+end)
+
+function BondrixLib.SendAdvancedNotification(notification)
+    BeginTextCommandThefeedPost('STRING')
+    AddTextComponentSubstringPlayerName(notification.message)
+    ThefeedNextPostBackgroundColor(notification.color)
+    EndTextCommandThefeedPostMessagetext(notification.name, notification.name, notification.flash, notification.icon, notification.sender, notification.subject)
+    EndTextCommandThefeedPostTicker(notification.flash, notification.important)
+end
+RegisterNetEvent('bondrix_lib:onAdvancedNotificationSend')
+AddEventHandler('bondrix_lib:onAdvancedNotificationSend', function(notification)
+    BondrixLib.SendAdvancedNotification(notification)
+end)
